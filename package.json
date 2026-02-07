@@ -1,0 +1,19 @@
+{
+  "name": "frontend-engineer-handbook",
+  "version": "1.0.0",
+  "description": "A production-grade guide to modern frontend engineering",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Run tests in individual modules\" && exit 0"
+  },
+  "keywords": [
+    "frontend",
+    "react",
+    "typescript",
+    "handbook",
+    "tutorial",
+    "bootcamp"
+  ],
+  "author": "Frontend Engineer Handbook Contributors",
+  "license": "MIT"
+}
