@@ -1,0 +1,48 @@
+/* ============================================================================
+   BUTTON COMPONENT
+   TODO: Implement button styles following the requirements
+   ============================================================================ */
+
+/* Base Button */
+.btn {
+  /* TODO: Add base button styles */
+}
+
+/* Button Variants */
+.btn--primary {
+  /* TODO: Primary button styles */
+}
+
+.btn--secondary {
+  /* TODO: Secondary button styles */
+}
+
+.btn--danger {
+  /* TODO: Danger button styles */
+}
+
+.btn--outline {
+  /* TODO: Outline button styles */
+}
+
+/* Button Sizes */
+.btn--sm {
+  /* TODO: Small button styles */
+}
+
+.btn--lg {
+  /* TODO: Large button styles */
+}
+
+/* Button States */
+.btn:hover {
+  /* TODO: Hover styles */
+}
+
+.btn:active {
+  /* TODO: Active/pressed styles */
+}
+
+.btn:disabled {
+  /* TODO: Disabled styles */
+}

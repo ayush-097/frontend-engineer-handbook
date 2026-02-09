@@ -1,0 +1,15 @@
+{
+  "name": "html-css-visual-tests",
+  "version": "1.0.0",
+  "description": "Visual regression tests for HTML/CSS components",
+  "scripts": {
+    "test:reference": "backstop reference",
+    "test:visual": "backstop test",
+    "test:approve": "backstop approve",
+    "serve": "npx http-server ../../ -p 8080"
+  },
+  "devDependencies": {
+    "backstopjs": "^6.0.0",
+    "http-server": "^14.0.0"
+  }
+}

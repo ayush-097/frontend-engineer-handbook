@@ -1,0 +1,30 @@
+/* TODO: Implement the navbar styles
+ * Requirements:
+ * 1. Mobile-first approach
+ * 2. Flexbox for layout
+ * 3. Smooth transitions
+ * 4. Accessible focus states
+ * 
+ * Hints:
+ * - Use the checkbox :checked state to toggle menu
+ * - Transform for slide-in animation
+ * - Focus-visible for keyboard navigation
+ */
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Properties */
+:root {
+  --navbar-height: 60px;
+  --primary-color: #3498db;
+  --text-color: #333;
+  --bg-color: #fff;
+  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Your code here */

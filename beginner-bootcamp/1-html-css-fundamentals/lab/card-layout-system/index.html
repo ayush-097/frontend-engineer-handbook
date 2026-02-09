@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Layout System - Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Responsive Card Grid</h1>
+    
+    <div class="card-grid">
+      <!-- Card 1 -->
+      <article class="card">
+        <img class="card__image" src="https://picsum.photos/400/225?random=1" alt="Mountain landscape">
+        <div class="card__body">
+          <h3 class="card__title">Mountain Adventure</h3>
+          <p class="card__description">
+            Explore the breathtaking peaks and valleys of the mountain range.
+          </p>
+          <button class="card__button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card card--featured">
+        <span class="card__badge">Featured</span>
+        <img class="card__image" src="https://picsum.photos/400/225?random=2" alt="Ocean view">
+        <div class="card__body">
+          <h3 class="card__title">Ocean Escape</h3>
+          <p class="card__description">
+            Relax by the pristine beaches and crystal-clear waters.
+          </p>
+          <button class="card__button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <img class="card__image" src="https://picsum.photos/400/225?random=3" alt="City skyline">
+        <div class="card__body">
+          <h3 class="card__title">Urban Exploration</h3>
+          <p class="card__description">
+            Discover the vibrant culture and architecture of the city.
+          </p>
+          <button class="card__button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <img class="card__image" src="https://picsum.photos/400/225?random=4" alt="Forest path">
+        <div class="card__body">
+          <h3 class="card__title">Forest Retreat</h3>
+          <p class="card__description">
+            Immerse yourself in the tranquility of ancient woods.
+          </p>
+          <button class="card__button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card">
+        <img class="card__image" src="https://picsum.photos/400/225?random=5" alt="Desert dunes">
+        <div class="card__body">
+          <h3 class="card__title">Desert Journey</h3>
+          <p class="card__description">
+            Experience the vast beauty of endless sand dunes.
+          </p>
+          <button class="card__button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="card">
+        <img class="card__image" src="https://picsum.photos/400/225?random=6" alt="Northern lights">
+        <div class="card__body">
+          <h3 class="card__title">Aurora Borealis</h3>
+          <p class="card__description">
+            Witness the magical dance of the northern lights.
+          </p>
+          <button class="card__button">Learn More</button>
+        </div>
+      </article>
+
+      <!-- Loading skeleton -->
+      <article class="card card--loading">
+        <div class="card__image skeleton"></div>
+        <div class="card__body">
+          <div class="card__title skeleton"></div>
+          <div class="card__description skeleton"></div>
+          <div class="card__button skeleton"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</body>
+</html>

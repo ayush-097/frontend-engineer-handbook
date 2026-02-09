@@ -1,0 +1,41 @@
+/* ============================================================================
+   INPUT COMPONENT
+   TODO: Implement input field styles
+   ============================================================================ */
+
+/* Form Group */
+.form-group {
+  /* TODO: Form group container styles */
+}
+
+/* Label */
+.form-group label {
+  /* TODO: Label styles */
+}
+
+/* Input */
+.input {
+  /* TODO: Base input styles */
+}
+
+/* Input States */
+.input:focus {
+  /* TODO: Focus styles */
+}
+
+.input--error {
+  /* TODO: Error state styles */
+}
+
+.input--success {
+  /* TODO: Success state styles */
+}
+
+/* Helper Text */
+.form-group__error {
+  /* TODO: Error message styles */
+}
+
+.form-group__success {
+  /* TODO: Success message styles */
+}

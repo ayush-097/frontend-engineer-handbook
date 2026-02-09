@@ -1,0 +1,36 @@
+/* ============================================================================
+   MODAL COMPONENT
+   TODO: Implement modal styles using :target pseudo-class
+   ============================================================================ */
+
+.modal {
+  /* TODO: Modal container (hidden by default) */
+}
+
+.modal:target {
+  /* TODO: Show modal when targeted */
+}
+
+.modal__overlay {
+  /* TODO: Backdrop overlay */
+}
+
+.modal__container {
+  /* TODO: Modal content container */
+}
+
+.modal__header {
+  /* TODO: Modal header */
+}
+
+.modal__body {
+  /* TODO: Modal body */
+}
+
+.modal__footer {
+  /* TODO: Modal footer */
+}
+
+.modal__close {
+  /* TODO: Close button */
+}

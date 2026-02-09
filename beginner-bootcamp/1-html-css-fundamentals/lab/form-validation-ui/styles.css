@@ -1,0 +1,185 @@
+/* ============================================================================
+   FORM VALIDATION UI - LAB STYLES
+   TODO: Implement validation states using CSS pseudo-classes
+   ============================================================================ */
+
+:root {
+  --color-primary: #3498db;
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+  --color-gray: #7f8c8d;
+  --color-gray-light: #ecf0f1;
+  --color-dark: #2c3e50;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-8: 2rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--color-dark);
+  background: #f5f5f5;
+  padding: var(--space-8);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: var(--space-8);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+}
+
+.form {
+  margin-top: var(--space-8);
+}
+
+/* Form Group - Base */
+.form-group {
+  margin-bottom: var(--space-8);
+  position: relative;
+}
+
+.form-group__label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.required {
+  color: var(--color-error);
+}
+
+/* Input - Base */
+.form-group__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* TODO: Implement validation states
+ * 
+ * Hints:
+ * - Use :valid and :invalid pseudo-classes
+ * - Use :not(:placeholder-shown) to avoid showing errors on empty required fields
+ * - Show/hide error and success messages based on state
+ * - Add visual feedback (colors, icons)
+ */
+
+/* Validation Messages - Hidden by default */
+.form-group__error,
+.form-group__success,
+.form-group__hint {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: 0.875rem;
+  display: none; /* TODO: Show based on validation state */
+}
+
+.form-group__hint {
+  color: var(--color-gray);
+  display: block; /* Always visible */
+}
+
+.form-group__error {
+  color: var(--color-error);
+}
+
+.form-group__success {
+  color: var(--color-success);
+}
+
+/* Checkbox */
+.form-group--checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.form-group__checkbox {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+}
+
+.form-group--checkbox .form-group__label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.form-group--checkbox a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Button */
+.btn {
+  padding: var(--space-3) var(--space-8);
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn--primary:hover {
+  background: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+}
+
+/* Info Box */
+.info-box {
+  margin-top: var(--space-8);
+  padding: var(--space-4);
+  background: var(--color-gray-light);
+  border-radius: 4px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.info-box h3 {
+  margin-bottom: var(--space-2);
+  color: var(--color-primary);
+}
+
+.info-box ul {
+  margin-left: var(--space-4);
+}
+
+.info-box li {
+  margin-bottom: var(--space-2);
+}

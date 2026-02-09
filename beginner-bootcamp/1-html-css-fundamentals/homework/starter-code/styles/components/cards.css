@@ -1,0 +1,25 @@
+/* ============================================================================
+   CARD COMPONENT
+   TODO: Implement card styles
+   ============================================================================ */
+
+.card {
+  /* TODO: Base card styles */
+}
+
+.card__img {
+  /* TODO: Card image styles */
+}
+
+.card__content {
+  /* TODO: Card content area styles */
+}
+
+.card__link {
+  /* TODO: Card link styles */
+}
+
+/* Card Hover Effect */
+.card:hover {
+  /* TODO: Hover effect */
+}

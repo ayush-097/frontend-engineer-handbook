@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation UI - Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Form Validation Demo</h1>
+    <p>Try filling out the form to see validation states in action.</p>
+
+    <form class="form" novalidate>
+      
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" class="form-group__label">
+          Email Address <span class="required">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email"
+          class="form-group__input" 
+          placeholder="you@example.com"
+          required
+          aria-describedby="email-error"
+        >
+        <span id="email-error" class="form-group__error" role="alert">
+          Please enter a valid email address
+        </span>
+        <span class="form-group__success">
+          ✓ Email looks good
+        </span>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password" class="form-group__label">
+          Password <span class="required">*</span>
+        </label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password"
+          class="form-group__input" 
+          placeholder="Enter password"
+          required
+          minlength="8"
+          aria-describedby="password-error password-hint"
+        >
+        <span id="password-hint" class="form-group__hint">
+          Must be at least 8 characters
+        </span>
+        <span id="password-error" class="form-group__error" role="alert">
+          Password must be at least 8 characters
+        </span>
+        <span class="form-group__success">
+          ✓ Password meets requirements
+        </span>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="form-group">
+        <label for="confirm-password" class="form-group__label">
+          Confirm Password <span class="required">*</span>
+        </label>
+        <input 
+          type="password" 
+          id="confirm-password" 
+          name="confirm-password"
+          class="form-group__input" 
+          placeholder="Confirm password"
+          required
+          minlength="8"
+          aria-describedby="confirm-password-error"
+        >
+        <span id="confirm-password-error" class="form-group__error" role="alert">
+          Passwords must match
+        </span>
+        <span class="form-group__success">
+          ✓ Passwords match
+        </span>
+      </div>
+
+      <!-- Terms Checkbox -->
+      <div class="form-group form-group--checkbox">
+        <input 
+          type="checkbox" 
+          id="terms" 
+          name="terms"
+          class="form-group__checkbox" 
+          required
+          aria-describedby="terms-error"
+        >
+        <label for="terms" class="form-group__label">
+          I agree to the <a href="#">Terms and Conditions</a> <span class="required">*</span>
+        </label>
+        <span id="terms-error" class="form-group__error" role="alert">
+          You must agree to continue
+        </span>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn--primary">
+        Create Account
+      </button>
+
+    </form>
+
+    <div class="info-box">
+      <h3>💡 Try this:</h3>
+      <ul>
+        <li>Enter an invalid email (e.g., "test")</li>
+        <li>Enter a password less than 8 characters</li>
+        <li>Try submitting without checking the terms</li>
+        <li>Use Tab to navigate through fields</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

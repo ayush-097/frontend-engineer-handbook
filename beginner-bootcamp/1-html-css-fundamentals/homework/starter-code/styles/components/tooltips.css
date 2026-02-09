@@ -1,0 +1,33 @@
+/* ============================================================================
+   TOOLTIP COMPONENT
+   TODO: Implement tooltips using data attributes and ::after
+   ============================================================================ */
+
+.tooltip {
+  /* TODO: Base tooltip trigger styles */
+}
+
+.tooltip::after {
+  /* TODO: Tooltip bubble */
+}
+
+.tooltip:hover::after {
+  /* TODO: Show tooltip on hover */
+}
+
+/* Tooltip Positions */
+.tooltip--top::after {
+  /* TODO: Top position */
+}
+
+.tooltip--right::after {
+  /* TODO: Right position */
+}
+
+.tooltip--bottom::after {
+  /* TODO: Bottom position */
+}
+
+.tooltip--left::after {
+  /* TODO: Left position */
+}
