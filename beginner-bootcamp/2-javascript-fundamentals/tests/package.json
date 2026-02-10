@@ -1,0 +1,24 @@
+{
+  "name": "javascript-fundamentals-tests",
+  "version": "1.0.0",
+  "description": "Test suite for JavaScript fundamentals labs",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
