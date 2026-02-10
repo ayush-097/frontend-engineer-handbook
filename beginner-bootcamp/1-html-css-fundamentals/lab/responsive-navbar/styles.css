@@ -1,30 +1,308 @@
-/* TODO: Implement the navbar styles
- * Requirements:
- * 1. Mobile-first approach
- * 2. Flexbox for layout
- * 3. Smooth transitions
- * 4. Accessible focus states
- * 
- * Hints:
- * - Use the checkbox :checked state to toggle menu
- * - Transform for slide-in animation
- * - Focus-visible for keyboard navigation
- */
+/* ============================================================================
+   RESPONSIVE NAVBAR - COMPLETE IMPLEMENTATION
+   Pure CSS navigation with hamburger menu (no JavaScript!)
+   ============================================================================ */
 
-/* CSS Reset */
+:root {
+  --navbar-height: 60px;
+  --navbar-bg: #2c3e50;
+  --navbar-text: #ecf0f1;
+  --navbar-accent: #3498db;
+  --transition: 0.3s ease;
+  --z-navbar: 1000;
+}
+
+/* ============================================================================
+   RESET & BASE
+   ============================================================================ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Custom Properties */
-:root {
-  --navbar-height: 60px;
-  --primary-color: #3498db;
-  --text-color: #333;
-  --bg-color: #fff;
-  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
 }
 
-/* Your code here */
+/* ============================================================================
+   NAVBAR - Base Styles
+   ============================================================================ */
+
+.navbar {
+  background: var(--navbar-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-navbar);
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--navbar-height);
+}
+
+/* ============================================================================
+   LOGO
+   ============================================================================ */
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--navbar-text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.navbar__logo:hover {
+  color: var(--navbar-accent);
+}
+
+/* ============================================================================
+   HAMBURGER TOGGLE (Checkbox Hack)
+   ============================================================================ */
+
+/* Hide the checkbox */
+.navbar__toggle {
+  display: none;
+}
+
+/* Hamburger icon */
+.navbar__toggle-label {
+  display: none; /* Hidden on desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: calc(var(--z-navbar) + 2);
+}
+
+.navbar__toggle-label span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--navbar-text);
+  border-radius: 3px;
+  transition: all var(--transition);
+}
+
+/* ============================================================================
+   NAVIGATION MENU
+   ============================================================================ */
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar__item {
+  /* No additional styles needed */
+}
+
+.navbar__link {
+  color: var(--navbar-text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all var(--transition);
+  display: block;
+}
+
+.navbar__link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--navbar-accent);
+}
+
+.navbar__link--active {
+  background: var(--navbar-accent);
+  color: white;
+}
+
+.navbar__link--active:hover {
+  background: #2980b9;
+}
+
+/* ============================================================================
+   MOBILE STYLES (< 768px)
+   ============================================================================ */
+
+@media (max-width: 767px) {
+  /* Show hamburger icon */
+  .navbar__toggle-label {
+    display: flex;
+  }
+
+  /* Mobile menu - hidden by default */
+  .navbar__menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    max-width: 300px;
+    background: var(--navbar-bg);
+    flex-direction: column;
+    gap: 0;
+    padding: calc(var(--navbar-height) + 2rem) 2rem 2rem;
+
+    /* Hidden off-screen */
+    transform: translateX(100%);
+    transition: transform var(--transition);
+
+    /* Add shadow */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+
+    /* Above overlay */
+    z-index: calc(var(--z-navbar) + 1);
+  }
+
+  /* Show menu when checkbox is checked */
+  .navbar__toggle:checked ~ .navbar__menu {
+    transform: translateX(0);
+  }
+
+  /* Backdrop overlay */
+  .navbar__toggle:checked ~ .navbar__menu::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    animation: fadeIn var(--transition);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Hamburger animation to X */
+  .navbar__toggle:checked + .navbar__toggle-label span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .navbar__toggle:checked + .navbar__toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar__toggle:checked + .navbar__toggle-label span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Menu items spacing */
+  .navbar__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar__link {
+    padding: 1rem;
+    border-radius: 0;
+  }
+
+  .navbar__link--active {
+    border-left: 3px solid var(--navbar-accent);
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+/* Focus styles for keyboard navigation */
+.navbar__toggle-label:focus-within {
+  outline: 2px solid var(--navbar-accent);
+  outline-offset: 4px;
+}
+
+.navbar__link:focus {
+  outline: 2px solid var(--navbar-accent);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link (add to HTML if needed) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--navbar-accent);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================================================
+   MAIN CONTENT STYLES (Demo)
+   ============================================================================ */
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.main-content h1 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.main-content ul {
+  margin: 1rem 0 1rem 2rem;
+}
+
+.main-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================================
+   REDUCED MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+  .navbar__toggle-label {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    transform: none;
+    box-shadow: none;
+  }
+}
