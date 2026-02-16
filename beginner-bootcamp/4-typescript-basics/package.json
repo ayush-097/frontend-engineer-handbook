@@ -1,0 +1,40 @@
+{
+  "name": "typescript-basics",
+  "version": "1.0.0",
+  "description": "TypeScript Basics module — labs, tests, and homework",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
+    "test": "jest",
+    "test:types": "tsc --noEmit tests/type-tests.ts",
+    "test:fetch": "jest lab/typed-fetch-wrapper/http-client.test.ts",
+    "test:components": "jest lab/generic-components/components.test.tsx",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/jest": "^29.0.0",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "setupFilesAfterFramework": ["@testing-library/jest-dom"],
+    "testMatch": ["**/*.test.ts", "**/*.test.tsx"],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": {
+          "strict": true,
+          "jsx": "react-jsx"
+        }
+      }
+    }
+  }
+}
