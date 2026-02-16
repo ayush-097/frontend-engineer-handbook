@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual DOM Demo</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 50px auto; }
+    button { padding: 8px 16px; margin: 8px; cursor: pointer; }
+    .item { padding: 8px; border-bottom: 1px solid #eee; }
+    .item.active { background: #d4edda; }
+    #render-count { color: #999; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Virtual DOM Demo</h1>
+  <div id="render-count">Renders: 0</div>
+  <div id="app"></div>
+
+  <button onclick="addItem()">Add Item</button>
+  <button onclick="toggleFirst()">Toggle First Active</button>
+  <button onclick="removeFirst()">Remove First</button>
+
+  <script type="module">
+    import { createElement, render, diff, patch } from './vdom.js';
+    window.createElement = createElement;
+
+    let items = [
+      { id: 1, text: 'Item 1', active: false },
+      { id: 2, text: 'Item 2', active: false },
+    ];
+    let nextId = 3;
+    let renders = 0;
+
+    function buildVdom(items) {
+      return createElement('div', { class: 'list' },
+        ...items.map(item =>
+          createElement('div', { class: `item${item.active ? ' active' : ''}`, key: item.id },
+            item.text
+          )
+        )
+      );
+    }
+
+    const root = document.getElementById('app');
+    let currentVdom = buildVdom(items);
+    let currentDom = render(currentVdom);
+    root.appendChild(currentDom);
+
+    function update() {
+      renders++;
+      document.getElementById('render-count').textContent = `Renders: ${renders}`;
+
+      const newVdom = buildVdom(items);
+      const patches = diff(currentVdom, newVdom);
+      patch(currentDom, patches);
+      currentVdom = newVdom;
+    }
+
+    window.addItem = () => {
+      items.push({ id: nextId++, text: `Item ${nextId - 1}`, active: false });
+      update();
+    };
+
+    window.toggleFirst = () => {
+      if (items[0]) items[0].active = !items[0].active;
+      update();
+    };
+
+    window.removeFirst = () => {
+      items.shift();
+      update();
+    };
+  </script>
+</body>
+</html>

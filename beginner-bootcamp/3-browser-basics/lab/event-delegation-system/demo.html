@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Delegation Demo</title>
+  <style>
+    body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; }
+    .list { list-style: none; padding: 0; }
+    .list li { display: flex; align-items: center; gap: 12px; padding: 12px;
+               border-bottom: 1px solid #eee; }
+    .list li.done span { text-decoration: line-through; color: #999; }
+    button { padding: 6px 12px; cursor: pointer; border: 1px solid #ddd; border-radius: 4px; }
+    .btn-delete { background: #fee; color: #c0392b; }
+    .btn-done { background: #efe; color: #27ae60; }
+    #add-form { display: flex; gap: 8px; margin-bottom: 20px; }
+    #add-form input { flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+    #log { background: #f8f9fa; padding: 12px; border-radius: 4px; font-size: 13px;
+           font-family: monospace; max-height: 200px; overflow-y: auto; }
+  </style>
+</head>
+<body>
+  <h1>Event Delegation Demo</h1>
+  <p>All interactions use ONE listener on the <code>&lt;ul&gt;</code> element.</p>
+
+  <div id="add-form">
+    <input type="text" id="new-item" placeholder="New todo item...">
+    <button id="add-btn">Add</button>
+  </div>
+
+  <ul class="list" id="todo-list">
+    <li data-id="1">
+      <button class="btn-done">✓</button>
+      <span>Learn event delegation</span>
+      <button class="btn-delete">✗</button>
+    </li>
+    <li data-id="2">
+      <button class="btn-done">✓</button>
+      <span>Build a virtual DOM</span>
+      <button class="btn-delete">✗</button>
+    </li>
+  </ul>
+
+  <h3>Event Log (ONE listener handles all ↓)</h3>
+  <div id="log"></div>
+
+  <script type="module">
+    import { EventHub } from './event-delegation.js';
+
+    const list = document.getElementById('todo-list');
+    const hub = new EventHub(list);
+    const log = document.getElementById('log');
+    let nextId = 3;
+
+    function logEvent(msg) {
+      const entry = document.createElement('div');
+      entry.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+      log.prepend(entry);
+    }
+
+    // ONE listener handles done for all items (including new ones!)
+    hub.on('click', '.btn-done', (event, btn) => {
+      const li = btn.closest('li');
+      li.classList.toggle('done');
+      logEvent(`Toggled done: item #${li.dataset.id}`);
+    });
+
+    // ONE listener handles delete for all items
+    hub.on('click', '.btn-delete', (event, btn) => {
+      const li = btn.closest('li');
+      logEvent(`Deleted: item #${li.dataset.id}`);
+      li.remove();
+    });
+
+    // Add new items
+    document.getElementById('add-btn').addEventListener('click', () => {
+      const input = document.getElementById('new-item');
+      if (!input.value.trim()) return;
+
+      const li = document.createElement('li');
+      li.dataset.id = nextId++;
+      li.innerHTML = `
+        <button class="btn-done">✓</button>
+        <span>${input.value}</span>
+        <button class="btn-delete">✗</button>
+      `;
+      list.appendChild(li);
+      logEvent(`Added: "${input.value}" — delegated listeners work automatically!`);
+      input.value = '';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "name": "browser-basics-tests",
+  "version": "1.0.0",
+  "description": "Test suite for Browser Basics module",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:dom": "jest dom-manipulation.test.js",
+    "test:vdom": "jest ../lab/virtual-dom-implementation/vdom.test.js",
+    "test:delegation": "jest ../lab/event-delegation-system/event-delegation.test.js",
+    "test:lazy": "jest ../lab/intersection-observer-lazy-load/lazy-load.test.js"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/*.test.js"
+    ],
+    "roots": [
+      "<rootDir>",
+      "<rootDir>/../lab"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
+      }
+    },
+    "collectCoverageFrom": [
+      "../lab/**/*.js",
+      "!../lab/**/*.test.js",
+      "!../lab/**/demo.js"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0"
+  }
+}
